@@ -109,16 +109,16 @@ if __name__ == '__main__':
     if args.code is None:
         raise ValueError('Must provide code')
 
-    while True:
+    document_uploaded = False
+    while not document_uploaded:
         document_uploaded = check_uploaded_document(url='https://referti.miulli.it:4430/galileo/public/menu.faces',
                                                     with_window=False,
                                                     username=args.username,
                                                     password=args.password,
                                                     code=args.code,
                                                     telegram_bot_token=args.telegram_bot_token)
-        if document_uploaded:
-            print("Document uploaded")
-            break
 
         print("Waiting...")
         time.sleep(300)
+    else:
+        print("Document uploaded")
