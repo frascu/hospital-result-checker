@@ -24,7 +24,7 @@ The parameters are:
 - `--username` `-u` - provided username
 - `--password` `-p` - provided password
 - `--code` `-c` - provided code 
-- `--telegram-bot-token` `-t` (optional) - Telegram bot token that you can generate with bot father
+- `--telegram-bot-token` `-t` (optional) - Telegram bot token that you can generate with [BotFather](https://t.me/botfather)
 
 ### Usage
 ```shell
