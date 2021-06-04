@@ -1,7 +1,7 @@
 # Hospital result checker
 
 ## History
-During last weekend, I took the Covid-19 test. At the end of the test, the nurse gave me a sheet of paper describing how
+Last weekend, I took the Covid-19 test. At the end of the test, the nurse gave me a sheet of paper describing how
 to check my result. There were the credentials in order to check the result on their platform.
 
 Instead of checking manually every 5 minutes if something had been uploaded, I preferred to create this small scraper
