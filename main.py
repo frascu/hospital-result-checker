@@ -3,6 +3,7 @@ import os
 import time
 import telepot
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
 
 
@@ -23,15 +24,15 @@ def check_uploaded_document(url, with_window, username, password, code, telegram
     driver = webdriver.Firefox(options=options)
 
     driver.get(url)
-
-    username_input = driver.find_element_by_id('j_username')
+    
+    username_input = driver.find_element(by=By.ID, value='j_username')
     username_input.send_keys(username)
 
-    username_input = driver.find_element_by_id('j_password')
+    username_input = driver.find_element(by=By.ID, value='j_password')
     username_input.send_keys(password)
 
     access_button = None
-    input_buttons = driver.find_elements_by_xpath("//input[@class='button']")
+    input_buttons = driver.find_elements(by=By.XPATH, value="//input[@class='button']")
     for input_button in input_buttons:
         if input_button.get_attribute('value') == 'Accedi':
             access_button = input_button
@@ -46,29 +47,29 @@ def check_uploaded_document(url, with_window, username, password, code, telegram
 
     print("Logging...")
 
-    menu = driver.find_element_by_id('bottommenu')
+    menu = driver.find_element(by=By.ID, value='bottommenu')
 
-    search_button = menu.find_element_by_tag_name('input')
+    search_button = menu.find_element(by=By.TAG_NAME, value='input')
     search_button.click()
 
-    col2 = driver.find_element_by_xpath("//div[@class='col2']")
+    col2 = driver.find_element(by=By.XPATH, value="//div[@class='col2']")
 
-    input_button = col2.find_elements_by_tag_name('input')[0]
+    input_button = col2.find_elements(by=By.TAG_NAME, value='input')[0]
     input_button.send_keys(code)
 
-    search_button = col2.find_elements_by_tag_name('input')[1]
+    search_button = col2.find_elements(by=By.TAG_NAME, value='input')[1]
     search_button.click()
 
-    tbody = driver.find_elements_by_tag_name('tbody')[1]
+    tbody = driver.find_elements(by=By.TAG_NAME, value='tbody')[1]
 
     if not tbody:
         print("Document not found")
         driver.quit()
         return False
 
-    tr_elements = tbody.find_elements_by_tag_name('tr')
+    tr_elements = tbody.find_elements(by=By.TAG_NAME, value='tr')
     for tr_element in tr_elements:
-        td_elements = tr_element.find_elements_by_tag_name('td')
+        td_elements = tr_element.find_elements(by=By.TAG_NAME, value='td')
 
         if len(td_elements) < 3:
             print("Document not found")
@@ -76,7 +77,7 @@ def check_uploaded_document(url, with_window, username, password, code, telegram
             return False
 
         print("Downloading...")
-        download_button = td_elements[2].find_element_by_tag_name('input')
+        download_button = td_elements[2].find_element(by=By.TAG_NAME, value='input')
         download_button.click()
         print("Document downloaded")
 
