@@ -13,8 +13,7 @@ or other hospitals that use the same platform.
 
 ## Install 
 ```shell
-pip install selenium
-pip install telepot
+pip install -r requirements.txt
 ```
 Make sure you have also installed [geckodriver](https://github.com/mozilla/geckodriver).
 
