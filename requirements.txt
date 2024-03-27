@@ -1,2 +1,2 @@
-selenium~=4.17.1
+selenium~=4.19.0
 telepot~=12.7
